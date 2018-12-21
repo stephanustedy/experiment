@@ -1,0 +1,16 @@
+  version: "3"
+  services:
+    nginx:
+      image: "nginx-test-dcker-git"
+      ports:
+        - "80:80"
+      build:
+            context: ./
+            dockerfile: ./.docker/nginx-test-dcker-git/Dockerfile
+    golang:
+      image: "golang-test-dcker-git"
+      ports:
+        - "1234:1234"
+      build:
+            context: ./
+            dockerfile: ./.docker/golang-test-dcker-git/Dockerfile
