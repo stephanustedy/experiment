@@ -21,7 +21,7 @@ jobs:
     docker:
       - image: google/cloud-sdk
     environment:
-      - PROJECT_NAME: "Experiments"
+      - PROJECT_NAME: "experiments"
       - GOOGLE_PROJECT_ID: "data-potential-207202"
       - GOOGLE_COMPUTE_ZONE: "us-central1-a"
       - GOOGLE_CLUSTER_NAME: "experiment"
