@@ -26,6 +26,7 @@ jobs:
       - GOOGLE_COMPUTE_ZONE: "us-central1-a"
       - GOOGLE_CLUSTER_NAME: "experiment"
     steps:
+      - checkout
       - run: 
           name: Setup Google Cloud SDK
           command: |
@@ -39,7 +40,7 @@ jobs:
       - run: 
           name: Docker build and push
           command: |
-            docker build  \
+            docker build -f .docker/deployment.Dockerfile \
               --build-arg COMMIT_REF=${CIRCLE_SHA1} \
               --build-arg BUILD_DATE=`date -u +”%Y-%m-%dT%H:%M:%SZ”` \
               -t ${PROJECT_NAME} .
