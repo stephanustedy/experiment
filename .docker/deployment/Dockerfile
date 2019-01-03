@@ -11,5 +11,6 @@ ENV APP_COMMIT_REF=${COMMIT_REF} \
     APP_BUILD_DATE=${BUILD_DATE}
 
 RUN go build -o main .
+EXPOSE 1234
 
 CMD ["/app/main"]
