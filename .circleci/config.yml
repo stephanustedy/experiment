@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  build_and_test:
     docker:
       - image: circleci/golang
     steps:
@@ -17,7 +17,7 @@ jobs:
             set -x
             docker-compose build
             docker-compose up -d
-  deploy:
+  deploy_to_staging:
     docker:
       - image: google/cloud-sdk
     environment:
@@ -52,3 +52,14 @@ jobs:
             envsubst < ${HOME}/project/k8s.yml > ${HOME}/patched_k8s.yml
             kubectl apply -f ${HOME}/patched_k8s.yml
             kubectl rollout status deployment/${PROJECT_NAME}
+workflows:
+  version: 2
+  build_test_deploy:
+    jobs:
+      - build_and_test
+      - deploy_to_staging:
+          requires:
+            - build_and_test
+          filters:
+            branches:
+              only: master
