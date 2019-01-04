@@ -11,7 +11,7 @@ spec:
     targetPort: 1234
   type: LoadBalancer
 ---
-apiVersion: apps
+apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
   name: ${PROJECT_NAME}
