@@ -26,7 +26,7 @@ type Message struct {
 
 func main() {
 	// Create a simple file server
-	fs := http.FileServer(http.Dir("files/asset"))
+	fs := http.FileServer(http.Dir("/asset"))
 	http.Handle("/", fs)
 
 	// Configure websocket route
