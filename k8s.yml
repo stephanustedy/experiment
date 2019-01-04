@@ -9,9 +9,6 @@ spec:
   - protocol: TCP
     port: 80
     targetPort: 1234
-  - protocol: TCP
-    port: 8080
-    targetPort: 1234
   type: LoadBalancer
 ---
 apiVersion: apps/v1beta1
@@ -37,3 +34,16 @@ spec:
         - name: http
           containerPort: 1234
           protocol: TCP
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: ${PROJECT_NAME}-2
+spec:
+  selector:
+    app: ${PROJECT_NAME}-2
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 1234
+  type: LoadBalancer
