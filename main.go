@@ -12,7 +12,7 @@ func main() {
 	})
 
 	http.HandleFunc("/panic", func(w http.ResponseWriter, r *http.Request) {
-		log.Fatal(w, "hello world 3")
+		log.Println(w, "hello world 3")
 	})
 
 	http.ListenAndServe(":1234", nil)
